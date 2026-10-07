@@ -150,3 +150,7 @@ select[class*=tone]{background:var(--tone-soft);color:var(--tone);border:1px sol
 /* Native select menus preserve the original browser/OS dropdown. */
 select{appearance:auto} .overview-card select{border-left:4px solid var(--tone);background:var(--tone-soft);color:var(--tone)}
 .privacy-note{border-top:0;padding-top:0} ::placeholder{color:#757575;opacity:1}
+
+.definition-contract .contract-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 16px;padding:20px 0 24px;border-bottom:1px solid var(--line)}
+.contract-fields>label{margin:0;min-width:0}.contract-fields textarea{display:block;min-height:90px;border:1px solid #bbb;padding:10px;margin-top:7px}.contract-fields>label:last-child{grid-column:1/-1;max-width:calc((100% - 16px)/2)}.contract-fields select{display:block;width:100%;padding:9px 10px;margin-top:7px}
+@media(max-width:1000px){.definition-contract .contract-fields{grid-template-columns:1fr}.contract-fields>label:last-child{max-width:100%}}
