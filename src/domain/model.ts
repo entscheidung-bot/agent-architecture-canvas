@@ -21,4 +21,7 @@ for(const [name,rows] of Object.entries(a.inventories)){
  for(const r of rows){for(const key of Object.keys(r)){if(key!=='id'&&!table.columns.some(c=>c[0]===key))throw Error('Unknown resource field: '+key);}
  for(const col of table.columns){if(col[2]!=='select'||!r[String(col[0])])continue;const options=col[3] as string[];const v=r[String(col[0])];const matched=options.find(o=>o.toUpperCase().replace(/ /g,'_')===v.toUpperCase().replace(/ /g,'_'));if(!matched)throw Error('Invalid '+String(col[0])+': '+v);if(legacy.success)r[String(col[0])]=matched.toUpperCase().replace(/ /g,'_');}}
 }
+// Remove only blank, unresolved generated additions; never discard entered work or blockers.
+const previousCounts:Record<string,number>={definition:14,identity:12,evaluation:15,delegation:9,runtime:15,observability:18,readiness:16};
+a.decisions=a.decisions.filter(d=>{const c=canvases.find(c=>c.id===d.canvas);const count=c&&'decisions'in c?(c.decisions||[]).length:0;const index=Number(d.id.slice(d.canvas.length+1));const redundant=d.id===`${d.canvas}.${index}`&&index>=count&&index<(previousCounts[d.canvas]||0);return !redundant||d.status!=='NEEDS_DECISION'||!!d.decision.trim()||!!d.notes.trim();});
 if(!a.decisions.length)throw Error('Missing architecture decisions');const ids=[...a.decisions.map(d=>d.id),...Object.values(a.inventories).flat().map(r=>r.id)];if(new Set(ids).size!==ids.length)throw Error('Duplicate IDs');if(a.decisions.some(d=>!canvases.some(c=>c.id===d.canvas)))throw Error('Unknown canvas');return a;}

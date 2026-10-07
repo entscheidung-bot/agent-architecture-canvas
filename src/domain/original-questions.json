@@ -1,0 +1,402 @@
+[
+  {
+    "id": "overview",
+    "decisions": []
+  },
+  {
+    "id": "definition",
+    "decisions": [
+      [
+        "Purpose",
+        "What business or technical outcome is this agent responsible for?"
+      ],
+      [
+        "Boundaries",
+        "What must this agent explicitly not do?"
+      ],
+      [
+        "Users",
+        "Who invokes it: humans, applications, agents, or all three?"
+      ],
+      [
+        "Inputs & outputs",
+        "What input formats are accepted and what output contract is produced?"
+      ],
+      [
+        "Model strategy",
+        "Primary model, fallbacks, model constraints, and model-selection rules."
+      ],
+      [
+        "Skills",
+        "What capabilities does the agent intentionally expose?"
+      ],
+      [
+        "Autonomy",
+        "At what autonomy level may the agent operate, and where does it stop?"
+      ],
+      [
+        "Failure behavior",
+        "How should it fail, retry, degrade, or escalate when uncertain or unavailable?"
+      ]
+    ]
+  },
+  {
+    "id": "identity",
+    "decisions": [
+      [
+        "Agent identity",
+        "What stable runtime/service identity represents this agent?"
+      ],
+      [
+        "Invoker identity",
+        "How is the calling user, service, or agent identity preserved?"
+      ],
+      [
+        "Invocation policy",
+        "Who is allowed to invoke this agent and from which trust boundary?"
+      ],
+      [
+        "Delegation",
+        "Can this agent invoke other agents, and does identity propagate?"
+      ],
+      [
+        "Tool authorization",
+        "How are tool-level permissions granted and constrained?"
+      ],
+      [
+        "Resource authorization",
+        "Which tenants, projects, accounts, datasets, or resources are in scope?"
+      ],
+      [
+        "Credential handling",
+        "Where do credentials/tokens live and how are they rotated?"
+      ],
+      [
+        "Audit attribution",
+        "How do logs distinguish user intent, agent execution, and downstream action?"
+      ]
+    ]
+  },
+  {
+    "id": "tools",
+    "decisions": [
+      [
+        "Tool allowlist",
+        "How does the runtime decide which tools this agent may see or invoke?"
+      ],
+      [
+        "Discovery",
+        "Are tools static, registry-driven, MCP-discovered, or dynamically selected?"
+      ],
+      [
+        "Input validation",
+        "How are tool arguments validated before execution?"
+      ],
+      [
+        "Side effects",
+        "How are read-only, reversible, external, financial, and destructive actions distinguished?"
+      ],
+      [
+        "Approval boundary",
+        "Which actions require human approval before execution?"
+      ],
+      [
+        "Failure & retry",
+        "Which calls may retry, and how are duplicate side effects prevented?"
+      ]
+    ]
+  },
+  {
+    "id": "memory",
+    "decisions": [
+      [
+        "Memory Scope",
+        "What specific facts, preferences, decisions, or history must survive across sessions?"
+      ],
+      [
+        "Memory Types",
+        "Classify persistent items as Episodic, Semantic, or Procedural."
+      ],
+      [
+        "Retrieval",
+        "What triggers retrieval, how is it ranked, and what is the injection limit?"
+      ],
+      [
+        "Write & Consolidation",
+        "Who extracts memories, when are they written, and how are duplicates/conflicts merged?"
+      ],
+      [
+        "Staleness",
+        "Define timestamps, TTL, refresh behavior, invalidation, and source of truth."
+      ],
+      [
+        "Context Budget",
+        "Reserve hard limits for core instructions, retrieved memory, tool context, and recent turns."
+      ],
+      [
+        "Governance",
+        "Who can read, write, export, and delete memory? Define retention and auditability."
+      ]
+    ]
+  },
+  {
+    "id": "safety",
+    "decisions": [
+      [
+        "Autonomy level",
+        "Set L0–L5 autonomy and the maximum action class the agent may execute."
+      ],
+      [
+        "Prompt injection",
+        "How is untrusted content isolated from instructions and tool authority?"
+      ],
+      [
+        "Data handling",
+        "How are sensitive inputs, outputs, and tool parameters classified and protected?"
+      ],
+      [
+        "Policy enforcement",
+        "Where is policy evaluated: before model, before tool call, after tool call, or multiple points?"
+      ],
+      [
+        "Human approval",
+        "Which conditions force review or confirmation?"
+      ],
+      [
+        "Verification",
+        "How are high-impact actions verified before and/or after execution?"
+      ],
+      [
+        "Emergency controls",
+        "How can the agent, tool, tenant, or capability be disabled quickly?"
+      ]
+    ]
+  },
+  {
+    "id": "evaluation",
+    "decisions": [
+      [
+        "Success definition",
+        "What observable outcome means this agent performed correctly?"
+      ],
+      [
+        "Golden dataset",
+        "What curated examples represent expected behavior and difficult edge cases?"
+      ],
+      [
+        "Tool correctness",
+        "How do you evaluate tool choice, arguments, sequencing, and final state?"
+      ],
+      [
+        "Policy compliance",
+        "What tests prove security and policy controls are respected?"
+      ],
+      [
+        "Regression strategy",
+        "What runs on prompt, model, tool, memory, or policy changes?"
+      ],
+      [
+        "Production evaluation",
+        "How are live runs sampled and scored without exposing sensitive data?"
+      ],
+      [
+        "Release threshold",
+        "What minimum scores and zero-tolerance failures gate deployment?"
+      ]
+    ]
+  },
+  {
+    "id": "delegation",
+    "decisions": [
+      [
+        "Delegation policy",
+        "Which agents may invoke which other agents?"
+      ],
+      [
+        "Maximum depth",
+        "How many delegation hops are allowed before execution is stopped?"
+      ],
+      [
+        "Identity propagation",
+        "Does downstream execution use caller, user, or callee identity?"
+      ],
+      [
+        "Context propagation",
+        "What minimum context is shared, and what must never cross agent boundaries?"
+      ],
+      [
+        "Loop prevention",
+        "How are repeated delegation cycles detected and stopped?"
+      ],
+      [
+        "Final ownership",
+        "Which agent owns the final answer, action receipt, and user-facing error?"
+      ]
+    ]
+  },
+  {
+    "id": "runtime",
+    "decisions": [
+      [
+        "Environments",
+        "How are development, test, staging, and production isolated?"
+      ],
+      [
+        "Runtime isolation",
+        "What process/container/sandbox boundary exists between agents and tenants?"
+      ],
+      [
+        "Network",
+        "What ingress and egress paths are allowed from the runtime?"
+      ],
+      [
+        "Scaling & concurrency",
+        "How does the runtime scale and enforce per-agent/tenant concurrency?"
+      ],
+      [
+        "Sessions",
+        "Where is session state kept and how long does it survive?"
+      ],
+      [
+        "Timeouts & retries",
+        "What are execution, model, and tool timeouts and retry budgets?"
+      ],
+      [
+        "Deployment",
+        "How are versions promoted, canaried, rolled back, and pinned?"
+      ],
+      [
+        "Availability",
+        "What SLO/SLA and disaster-recovery behavior is required?"
+      ]
+    ]
+  },
+  {
+    "id": "registry",
+    "decisions": [
+      [
+        "Canonical ID",
+        "What immutable identifier represents the agent across environments?"
+      ],
+      [
+        "Registry metadata",
+        "Which fields are mandatory: owner, version, runtime, model, tools, classification, autonomy?"
+      ],
+      [
+        "Lifecycle",
+        "What transitions are allowed from Draft → Production → Retired?"
+      ],
+      [
+        "Versioning",
+        "What constitutes a new agent version and what remains immutable?"
+      ],
+      [
+        "Discovery",
+        "Who can discover agents and which metadata is exposed to other agents or users?"
+      ],
+      [
+        "Retirement",
+        "How are traffic, credentials, memories, tools, and audit records handled at retirement?"
+      ]
+    ]
+  },
+  {
+    "id": "observability",
+    "decisions": [
+      [
+        "Trace model",
+        "What is the end-to-end trace structure from gateway → agent → model → tool → response?"
+      ],
+      [
+        "Correlation",
+        "Which request, user, session, agent, tenant, and execution IDs must propagate?"
+      ],
+      [
+        "Sensitive telemetry",
+        "What data must be redacted, hashed, sampled, or never logged?"
+      ],
+      [
+        "Metrics",
+        "Which SLO, quality, token, cost, tool, policy, and escalation metrics are mandatory?"
+      ],
+      [
+        "Alerts",
+        "Which conditions page a human versus create an informational signal?"
+      ],
+      [
+        "Audit retention",
+        "Which events require longer-term immutable retention?"
+      ]
+    ]
+  },
+  {
+    "id": "security",
+    "decisions": [
+      [
+        "Trust boundaries",
+        "Where do untrusted users, content, tools, models, and external systems enter?"
+      ],
+      [
+        "Identity threats",
+        "How are spoofing, confused deputy, and privilege escalation prevented?"
+      ],
+      [
+        "Prompt threats",
+        "How are direct and indirect prompt injection contained?"
+      ],
+      [
+        "Memory threats",
+        "How are poisoning, cross-tenant leakage, and stale sensitive facts prevented?"
+      ],
+      [
+        "Tool threats",
+        "How are malicious or compromised tools constrained and monitored?"
+      ],
+      [
+        "Data exfiltration",
+        "How are outbound channels, model providers, and tool parameters restricted?"
+      ],
+      [
+        "Supply chain",
+        "How are models, prompts, packages, MCP servers, and tool definitions governed?"
+      ]
+    ]
+  },
+  {
+    "id": "readiness",
+    "decisions": [
+      [
+        "Architecture review",
+        "Have all relevant canvas decisions been reviewed and documented?"
+      ],
+      [
+        "Security review",
+        "Has the threat model been reviewed and high/critical risks addressed?"
+      ],
+      [
+        "Evaluation gate",
+        "Do required offline and regression evaluations pass?"
+      ],
+      [
+        "Policy gate",
+        "Are access, safety, approval, and runtime policies configured?"
+      ],
+      [
+        "Observability gate",
+        "Can operators trace, alert, investigate, and audit the agent?"
+      ],
+      [
+        "Operational gate",
+        "Are runbooks, owners, rollback, and kill switches ready?"
+      ],
+      [
+        "Data governance",
+        "Are retention, privacy, export, and deletion requirements implemented?"
+      ],
+      [
+        "Launch approval",
+        "Who gives the final production approval and under what conditions?"
+      ]
+    ]
+  }
+]

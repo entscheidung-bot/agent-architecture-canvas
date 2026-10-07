@@ -20,12 +20,12 @@
     "High": "orange",
     "Critical": "red",
     "Restricted": "red",
-    "L0 — Answer only": "gray",
-    "L1 — Recommend": "blue",
-    "L2 — Prepare action": "violet",
-    "L3 — Execute reversible": "amber",
-    "L4 — Execute external": "orange",
-    "L5 — High-impact autonomous": "red",
+    "L0 \u2014 Answer only": "gray",
+    "L1 \u2014 Recommend": "blue",
+    "L2 \u2014 Prepare action": "violet",
+    "L3 \u2014 Execute reversible": "amber",
+    "L4 \u2014 Execute external": "orange",
+    "L5 \u2014 High-impact autonomous": "red",
     "Draft": "gray",
     "Development": "blue",
     "Evaluation": "violet",
@@ -326,7 +326,7 @@
           "target",
           "Target",
           "text",
-          "e.g. ≥99%"
+          "e.g. \u226599%"
         ],
         [
           "dataset",
@@ -372,7 +372,7 @@
     },
     "delegation": {
       "title": "Agent delegation map",
-      "note": "Document every permitted caller → callee relationship and how authority/context propagate.",
+      "note": "Document every permitted caller \u2192 callee relationship and how authority/context propagate.",
       "addLabel": "+ Add delegation",
       "columns": [
         [
@@ -644,7 +644,7 @@
     {
       "id": "definition",
       "title": "Agent Definition",
-      "desc": "Define the agent’s purpose, boundaries, users, outputs, autonomy, ownership, and failure behavior.",
+      "desc": "Define the agent\u2019s purpose, boundaries, users, outputs, autonomy, ownership, and failure behavior.",
       "decisions": [
         [
           "Purpose",
@@ -677,30 +677,6 @@
         [
           "Failure behavior",
           "How should it fail, retry, degrade, or escalate when uncertain or unavailable?"
-        ],
-        [
-          "Responsibilities",
-          "Define responsibilities, constraints, ownership and review evidence."
-        ],
-        [
-          "Explicit non-responsibilities",
-          "Define explicit non-responsibilities, constraints, ownership and review evidence."
-        ],
-        [
-          "Inputs",
-          "Define inputs, constraints, ownership and review evidence."
-        ],
-        [
-          "Outputs",
-          "Define outputs, constraints, ownership and review evidence."
-        ],
-        [
-          "Human involvement",
-          "Define human involvement, constraints, ownership and review evidence."
-        ],
-        [
-          "Ownership",
-          "Define ownership, constraints, ownership and review evidence."
         ]
       ]
     },
@@ -740,22 +716,6 @@
         [
           "Audit attribution",
           "How do logs distinguish user intent, agent execution, and downstream action?"
-        ],
-        [
-          "Tenant isolation",
-          "Define tenant isolation, constraints, ownership and review evidence."
-        ],
-        [
-          "User delegation",
-          "Define user delegation, constraints, ownership and review evidence."
-        ],
-        [
-          "Approval requirements",
-          "Define approval requirements, constraints, ownership and review evidence."
-        ],
-        [
-          "Agent-to-agent invocation",
-          "Define agent-to-agent invocation, constraints, ownership and review evidence."
         ]
       ]
     },
@@ -834,7 +794,7 @@
       "decisions": [
         [
           "Autonomy level",
-          "Set L0–L5 autonomy and the maximum action class the agent may execute."
+          "Set L0\u2013L5 autonomy and the maximum action class the agent may execute."
         ],
         [
           "Prompt injection",
@@ -895,38 +855,6 @@
         [
           "Release threshold",
           "What minimum scores and zero-tolerance failures gate deployment?"
-        ],
-        [
-          "Task success",
-          "Define task success, constraints, ownership and review evidence."
-        ],
-        [
-          "Tool argument accuracy",
-          "Define tool argument accuracy, constraints, ownership and review evidence."
-        ],
-        [
-          "Hallucination rate",
-          "Define hallucination rate, constraints, ownership and review evidence."
-        ],
-        [
-          "Safety tests",
-          "Define safety tests, constraints, ownership and review evidence."
-        ],
-        [
-          "Adversarial tests",
-          "Define adversarial tests, constraints, ownership and review evidence."
-        ],
-        [
-          "Latency",
-          "Define latency, constraints, ownership and review evidence."
-        ],
-        [
-          "Cost",
-          "Define cost, constraints, ownership and review evidence."
-        ],
-        [
-          "Human feedback",
-          "Define human feedback, constraints, ownership and review evidence."
         ]
       ],
       "table": "evaluation"
@@ -959,18 +887,6 @@
         [
           "Final ownership",
           "Which agent owns the final answer, action receipt, and user-facing error?"
-        ],
-        [
-          "Recursive delegation allowed?",
-          "Define recursive delegation allowed?, constraints, ownership and review evidence."
-        ],
-        [
-          "Audit ownership",
-          "Define audit ownership, constraints, ownership and review evidence."
-        ],
-        [
-          "Failure ownership",
-          "Define failure ownership, constraints, ownership and review evidence."
         ]
       ],
       "table": "delegation"
@@ -1011,34 +927,6 @@
         [
           "Availability",
           "What SLO/SLA and disaster-recovery behavior is required?"
-        ],
-        [
-          "Runtime/platform",
-          "Define runtime/platform, constraints, ownership and review evidence."
-        ],
-        [
-          "Region",
-          "Define region, constraints, ownership and review evidence."
-        ],
-        [
-          "Internet egress",
-          "Define internet egress, constraints, ownership and review evidence."
-        ],
-        [
-          "Model access",
-          "Define model access, constraints, ownership and review evidence."
-        ],
-        [
-          "Secret management",
-          "Define secret management, constraints, ownership and review evidence."
-        ],
-        [
-          "Memory backend",
-          "Define memory backend, constraints, ownership and review evidence."
-        ],
-        [
-          "Rollback strategy",
-          "Define rollback strategy, constraints, ownership and review evidence."
         ]
       ]
     },
@@ -1057,7 +945,7 @@
         ],
         [
           "Lifecycle",
-          "What transitions are allowed from Draft → Production → Retired?"
+          "What transitions are allowed from Draft \u2192 Production \u2192 Retired?"
         ],
         [
           "Versioning",
@@ -1080,11 +968,11 @@
       "decisions": [
         [
           "Trace model",
-          "What is the end-to-end trace structure from gateway → agent → model → tool → response?"
+          "What is the end-to-end trace structure from gateway \u2192 agent \u2192 model \u2192 tool \u2192 response?"
         ],
         [
           "Correlation",
-          "Propagate agent_run_id, agent_id, agent_version, session_id, trace_id, caller_id, tool_id, model_id. Define tenant boundaries."
+          "Which request, user, session, agent, tenant, and execution IDs must propagate?"
         ],
         [
           "Sensitive telemetry",
@@ -1101,54 +989,6 @@
         [
           "Audit retention",
           "Which events require longer-term immutable retention?"
-        ],
-        [
-          "Agent run tracing",
-          "Define agent run tracing, constraints, ownership and review evidence."
-        ],
-        [
-          "Model calls",
-          "Define model calls, constraints, ownership and review evidence."
-        ],
-        [
-          "Tool calls",
-          "Define tool calls, constraints, ownership and review evidence."
-        ],
-        [
-          "Policy decisions",
-          "Define policy decisions, constraints, ownership and review evidence."
-        ],
-        [
-          "Memory retrieval",
-          "Define memory retrieval, constraints, ownership and review evidence."
-        ],
-        [
-          "Agent delegation",
-          "Define agent delegation, constraints, ownership and review evidence."
-        ],
-        [
-          "Human approvals",
-          "Define human approvals, constraints, ownership and review evidence."
-        ],
-        [
-          "Errors",
-          "Define errors, constraints, ownership and review evidence."
-        ],
-        [
-          "Token consumption",
-          "Define token consumption, constraints, ownership and review evidence."
-        ],
-        [
-          "Cost",
-          "Define cost, constraints, ownership and review evidence."
-        ],
-        [
-          "Latency",
-          "Define latency, constraints, ownership and review evidence."
-        ],
-        [
-          "Outcome/success",
-          "Define outcome/success, constraints, ownership and review evidence."
         ]
       ],
       "table": "observability"
@@ -1225,38 +1065,6 @@
         [
           "Launch approval",
           "Who gives the final production approval and under what conditions?"
-        ],
-        [
-          "Identity & Access",
-          "Define identity & access, constraints, ownership and review evidence."
-        ],
-        [
-          "Tools",
-          "Define tools, constraints, ownership and review evidence."
-        ],
-        [
-          "Memory",
-          "Define memory, constraints, ownership and review evidence."
-        ],
-        [
-          "Safety",
-          "Define safety, constraints, ownership and review evidence."
-        ],
-        [
-          "Runtime",
-          "Define runtime, constraints, ownership and review evidence."
-        ],
-        [
-          "SLOs",
-          "Define slos, constraints, ownership and review evidence."
-        ],
-        [
-          "Ownership",
-          "Define ownership, constraints, ownership and review evidence."
-        ],
-        [
-          "Runbooks",
-          "Define runbooks, constraints, ownership and review evidence."
         ]
       ],
       "table": "readiness"
