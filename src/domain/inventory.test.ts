@@ -1,0 +1,1 @@
+import{test,expect}from'vitest';import{createArchitecture}from'./model';test('starter risks and threats remain unresolved',()=>{const a=createArchitecture();expect(a.inventories.safety.length).toBe(10);expect(a.inventories.security.length).toBe(10);expect(a.inventories.safety.every(r=>r.status==='NEEDS_DECISION')).toBe(true);});
