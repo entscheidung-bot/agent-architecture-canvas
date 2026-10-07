@@ -1,0 +1,3 @@
+import {test,expect} from 'vitest';import {createArchitecture,parseArchitecture} from './model';import {stats,warnings}from'./rules';
+test('blank tool safe; readiness cannot pass an incomplete imported document',()=>{const a=createArchitecture();a.inventories.tools=[{id:'tool'}];expect(warnings(a)).toEqual([]);a.decisions=[];expect(()=>parseArchitecture(JSON.stringify(a))).toThrow();});
+test('readiness gates need pass or N/A',()=>{const a=createArchitecture();a.decisions.forEach(d=>{d.status='DEFINED';d.decision='Evidence'});a.inventories.readiness=[{id:'gate',status:'Review'}];expect(stats(a).ready).toBe(false);});

@@ -1,0 +1,8 @@
+import {test,expect} from 'vitest';
+import {createArchitecture,parseArchitecture} from './model';
+import {stats,warnings,prepareExport} from './rules';
+test('completion excludes N/A and blockers prevent ready',()=>{const a=createArchitecture();a.decisions.forEach(d=>{d.status='DEFINED';d.decision='Reviewed'});expect(stats(a).ready).toBe(true);a.decisions[0].status='BLOCKER';expect(stats(a).ready).toBe(false);expect(stats(a).blockers).toBe(1);a.decisions[0].status='NOT_APPLICABLE';expect(stats(a).percent).toBe(100);});
+test('high autonomy has transparent approval warning',()=>{const a=createArchitecture();a.agent.autonomyLevel='L5';expect(warnings(a).join()).toContain('approval');});
+test('export stamps review and roundtrips',()=>{const a=createArchitecture();a.document.lastReviewed='2000-01-01';const b=prepareExport(a);expect(b.document.lastReviewed).not.toBe(a.document.lastReviewed);expect(parseArchitecture(JSON.stringify(b))).toEqual(b);});
+test('prototype 2.0 migrates metadata, statuses and custom rows',()=>{const a=parseArchitecture(JSON.stringify({schemaVersion:'2.0',application:'Agent Architecture Canvas Pack',fields:{'meta-agent':'Legacy','meta-reviewed':'2001-02-03','definition-status-0':'Blocker','definition-decision-0':'Example'},tables:{memory:[{item:'Custom',type:'Semantic'}]}}));expect(a.agent.name).toBe('Legacy');expect(a.document.lastReviewed).toBe('2001-02-03');expect(a.decisions[0].status).toBe('BLOCKER');expect(a.inventories.memory[0].item).toBe('Custom');});
+test('reject invalid, future, duplicate IDs',()=>{expect(()=>parseArchitecture('{}')).toThrow();const a=createArchitecture();a.decisions[1].id=a.decisions[0].id;expect(()=>parseArchitecture(JSON.stringify(a))).toThrow('Duplicate');});

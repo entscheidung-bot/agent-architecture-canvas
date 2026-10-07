@@ -1,0 +1,1 @@
+import {defineConfig} from 'vite';export default defineConfig({base:'/agent-architecture-canvas/',esbuild:{jsx:'automatic'}});
