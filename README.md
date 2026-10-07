@@ -26,7 +26,7 @@ Import parses and validates before offering replacement confirmation. Unknown ve
 
 Autosave debounces 400 ms to `agent-architecture.v3` localStorage. Existing prototype storage is migrated. Storage errors display an export-backup warning. Browser storage is device/origin specific, not encrypted; clearing browser data removes it. Export backups regularly. Never enter credentials.
 
-Completion excludes Not Applicable. Defined decisions require actual text for readiness. Any decision blocker, risk/threat blocker or failed evaluation/checklist prevents readiness. Architecture readiness is not a safety certification. Transparent warnings cover persistent-memory governance, L4/L5 human approvals, financial-tool policy, destructive-tool recovery, delegation policy, production blockers and empty Defined decisions.
+Completion counts Defined and Not Applicable as resolved, divided by all decisions. Blockers and Needs Decision remain unresolved. Defined decisions require actual text for readiness. Any decision blocker, risk/threat blocker or failed evaluation/checklist prevents readiness. Architecture readiness is not a safety certification. Transparent warnings cover persistent-memory governance, L4/L5 human approvals, financial-tool policy, destructive-tool recovery, delegation policy, production blockers and empty Defined decisions.
 
 ## Extend
 Add a canvas entry to `reference.json`; append `[title,guidance]` questions. Existing indexed IDs must never be reordered; append only. Add table column definitions to its table schema. Add rules to `rules.ts` with failing tests first. Future registry/policy/runtime integrations should consume the canonical spec, never scrape UI state.
