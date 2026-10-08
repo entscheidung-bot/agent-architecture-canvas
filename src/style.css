@@ -170,4 +170,4 @@ select{appearance:auto} .overview-card select{border-left:4px solid var(--tone);
 .mobile-current{max-width:60%;overflow-wrap:anywhere}html{scroll-padding-top:80px}.decision{scroll-margin-top:80px}
 }
 
-.example-answer{border-top:1px solid var(--line);padding-top:8px}.example-answer summary{cursor:pointer;font-weight:700;color:var(--ink)}.decision-guidance .example-note{font-size:10px;color:var(--muted);margin:10px 0 8px}.example-answer p:last-child{line-height:1.5}
+.example-answer{border-top:1px solid var(--line);padding-top:8px}.example-answer summary{cursor:pointer;font-size:11px;font-weight:500;color:#666}.decision-guidance .example-note{font-size:10px;color:var(--muted);margin:10px 0 8px}.decision-guidance .example-answer p[data-example]{font-size:11px;line-height:1.5;font-style:italic;font-weight:400;color:#666;margin:8px 0 0}.decision-guidance .example-note{font-size:10px;font-weight:400;color:#666}
